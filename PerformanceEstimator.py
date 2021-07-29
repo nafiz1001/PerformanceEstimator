@@ -37,7 +37,7 @@ try:
             yaml_complexity = 0
             for yaml_line in open(yaml_path):
                 for pattern, complexity in pattern_and_complexity_list:
-                    if (m := pattern.search(yaml_line)):
+                    for m in pattern.finditer(yaml_line):
                         # m.groups(): all matches to the pattern in yaml_line
                         yaml_complexity += len(m.groups()) * complexity
 
