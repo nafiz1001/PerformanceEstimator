@@ -44,6 +44,6 @@ try:
             yaml_path_and_complexity_list.append((yaml_path, yaml_complexity))
 
         for yaml_path, yaml_complexity in sorted(yaml_path_and_complexity_list, key=lambda y_c: y_c[1], reverse=True):
-            print(f"{yaml_path}\t{yaml_complexity}")
+            print(f"{yaml_complexity}\t{yaml_path}")
 except BrokenPipeError:
     pass
