@@ -40,10 +40,10 @@ try:
                         # m.groups(): all matches to the pattern in yaml_line
                         yaml_complexity += len(m.groups()) * complexity
 
-            yaml_path_and_complexity_list.append((yaml_path, yaml_complexity))
+            yaml_path_and_complexity_list.append((yaml_path.relative_to(root_dir.parent), yaml_complexity))
 
-    for yaml_path, yaml_complexity in sorted(yaml_path_and_complexity_list, key=lambda y_c: y_c[1], reverse=True):
-        print(f"{yaml_complexity}\t{yaml_path}")
+    for yaml_rel_path, yaml_complexity in sorted(yaml_path_and_complexity_list, key=lambda y_c: y_c[1], reverse=True):
+        print(f"{yaml_complexity}\t{yaml_rel_path}")
 except BrokenPipeError:
     pass
 except Exception as e:
