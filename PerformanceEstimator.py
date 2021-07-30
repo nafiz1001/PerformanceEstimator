@@ -25,7 +25,7 @@ pattern_and_complexity_list : list[tuple[typing.Pattern, int]] = [
 ]
 
 # starting directory for finding *.yaml files
-root_dirs = [pathlib.Path(p) for p in sys.argv[1:]] if len(sys.argv) > 1 else [pathlib.Path(".")]
+root_dirs = (pathlib.Path(p) for p in sys.argv[1:]) if len(sys.argv) > 1 else [pathlib.Path(".")]
 
 # list of path to yaml and its associated total complexity
 yaml_path_and_complexity_list = list[tuple[pathlib.Path, int]]()
