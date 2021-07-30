@@ -5,11 +5,10 @@ import re
 import sys
 import typing
 
-def yaml_paths(root_dir: str):
-    path = pathlib.Path(root_dir)
-    if not path.is_dir():
+def yaml_paths(root_dir : pathlib.Path):
+    if not root_dir.is_dir():
         raise FileNotFoundError(f"{root_dir} is not accessible")
-    return path.rglob('*.yaml')
+    return root_dir.rglob('*.yaml')
 
 # a list of pattern and its associated complexity "points"
 ## 1 complexity per line
@@ -26,7 +25,7 @@ pattern_and_complexity_list : list[tuple[typing.Pattern, int]] = [
 ]
 
 # starting directory for finding *.yaml files
-root_dirs = sys.argv[1:] if len(sys.argv) > 1 else "."
+root_dirs = [pathlib.Path(p) for p in sys.argv[1:]] if len(sys.argv) > 1 else [pathlib.Path(".")]
 
 # list of path to yaml and its associated total complexity
 yaml_path_and_complexity_list = list[tuple[pathlib.Path, int]]()
