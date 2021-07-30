@@ -19,7 +19,7 @@ def yaml_paths(root_dir: str):
 
 pattern_and_complexity_list : list[tuple[typing.Pattern, int]] = [
     (re.compile(r"(pattern)"), 10),
-    (re.compile(r"[^<]([.][.][.])[^>]"), 10),
+    (re.compile(r"[^<]*([.][.][.])[^>]*"), 10),
     (re.compile(r"(<[.][.][.])"), 30),
     (re.compile(r"(\n)"), 1),
     (re.compile(r"([$][A-Z])"), 10)
