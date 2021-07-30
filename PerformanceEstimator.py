@@ -47,3 +47,7 @@ try:
         print(f"{yaml_complexity}\t{yaml_path}")
 except BrokenPipeError:
     pass
+except Exception as e:
+    print(e, file=sys.stderr)
+finally:
+    sys.stderr.close()
